@@ -21,6 +21,7 @@ class CreateNhanViensTable extends Migration
             $table->integer("SDT");
             $table->integer("Ca_lam_viec");
             $table->integer("Luong");
+            $table->timestamps();
         });
     }
 
