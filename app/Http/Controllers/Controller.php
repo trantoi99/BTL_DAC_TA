@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SendMail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Service\Response;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, SendMail;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Response;
 }
