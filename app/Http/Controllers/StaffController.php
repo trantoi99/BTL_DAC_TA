@@ -12,39 +12,37 @@ class StaffController extends Controller
     public function insert(NhanVienRequest $request)
     {
         try{
-            if($request->ajax())
+            $staff = nhan_vien::where('Ten_Nv', '=', $request->Ten_Nv)->firstOrFail();
+            if(!is_null($staff))
             {
-                $staff = nhan_vien::where('Ten_Nv', '=', $request->Ten_Nv)->first();
-                if(!is_null($staff))
-                {
-                    return $this->respondWithError("Bản ghi đã tồn tại.");
-                }
-
-                nhan_vien::create($request->getAttributes());
-
-                return $this->respondWithSuccess("Thêm mới thành công.");
+                return $this->respondWithError("Bản ghi đã tồn tại.");
             }
+
+            $model = $request->getAttributes();
+
+            nhan_vien::create($model);
+
+            return $this->respondWithSuccess("Thêm mới thành công.");
         }
         catch(Exception $ex){
-            return $this->respondWithError("Lỗi xảy ra khi thực hiện.");
+            return $ex->getMessage();
         }
     }
 
     public function update(NhanVienRequest $request)
     {
         try{
-            if($request->ajax())
+            $id = $request->Id_Nv;
+            $staff = nhan_vien::where("Id_Nv", "=", $id)->firstOrFail();
+
+            if(is_null($staff))
             {
-                $staff = nhan_vien::find($request->Id_Nv);
-                if(is_null($staff))
-                {
-                    return $this->respondWithError("Không tìm thấy bản ghi.");
-                }
-
-                $staff->update($request->getAttributes());
-                return $this->respondWithSuccess("Cập nhật thành công.");
-
+                return $this->respondWithError("Không tìm thấy bản ghi.");
             }
+
+            $staff->update($request->getAttributes());
+            return $this->respondWithSuccess("Cập nhật thành công.");
+
         }
         catch(Exception $ex){
             return $this->respondWithError("Lỗi xảy ra khi thực hiện.");
@@ -54,7 +52,8 @@ class StaffController extends Controller
     public function delete($id)
     {
         try{
-            $staff = nhan_vien::find($id);
+            $staff = nhan_vien::where("Id_Nv", "=", $id)->firstOrFail();
+
             if(!is_null($staff))
             {
                 $staff->delete();
@@ -66,14 +65,14 @@ class StaffController extends Controller
         }
         catch(Exception $ex)
         {
-            return $this->respondWithError("Lỗi xảy ra khi thực hiện.");
+            return $ex->getMessage();
         }
     }
 
     public function show($id)
     {
         try{
-            $staff = nhan_vien::find($id);
+            $staff = nhan_vien::where("Id_Nv", "=", $id)->firstOrFail();
             return $this->respond($staff);
         }
         catch(Exception $ex)
