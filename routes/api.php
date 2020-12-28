@@ -22,3 +22,6 @@ Route::post('staff/insert', 'StaffController@insert')->name('insert_staff');
 Route::post('staff/update', 'StaffController@update')->name('update_staff');
 Route::get('staff/delete/{id}', 'StaffController@delete')->name('delete_staff');
 Route::get('staff/show/{id}', 'StaffController@show')->name('show_staff');
+
+Route::get('cart/insert/{id}', 'CartController@add')->name('add_cart');
+Route::get('cart/show', 'CartController@index')->name('show_cart');
