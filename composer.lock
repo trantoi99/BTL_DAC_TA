@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0109e99ad2ec1e6398a7e570a9d7bfea",
+    "content-hash": "430ceb2463d5d1b3ad993cec4f5f6c12",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1476,6 +1476,73 @@
                 }
             ],
             "time": "2020-05-30T13:11:16+00:00"
+        },
+        {
+            "name": "marcin-orlowski/laravel-api-response-builder",
+            "version": "8.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarcinOrlowski/laravel-api-response-builder.git",
+                "reference": "277a7024ecbf7cbf6dfeaf27c26a721c3981004e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarcinOrlowski/laravel-api-response-builder/zipball/277a7024ecbf7cbf6dfeaf27c26a721c3981004e",
+                "reference": "277a7024ecbf7cbf6dfeaf27c26a721c3981004e",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">= 6.0",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.15",
+                "marcin-orlowski/coding-standard": "^1.3",
+                "marcin-orlowski/phpunit-extra-asserts": "^1.1",
+                "orchestra/testbench": "^4.0",
+                "phpunit/php-code-coverage": "^7.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MarcinOrlowski\\ResponseBuilder\\ResponseBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/",
+                    "tests/",
+                    "tests/Traits/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcin Orlowski",
+                    "homepage": "http://MarcinOrlowski.com/"
+                }
+            ],
+            "description": "Helps building nice, normalized and easy to consume Laravel REST API.",
+            "homepage": "https://github.com/MarcinOrlowski/laravel-api-response-builder",
+            "keywords": [
+                "PHP7",
+                "android",
+                "api",
+                "builder",
+                "helper",
+                "ios",
+                "json",
+                "laravel",
+                "mobile",
+                "rest"
+            ],
+            "time": "2020-10-15T18:00:08+00:00"
         },
         {
             "name": "markbaker/complex",
@@ -5469,16 +5536,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.3",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "d8dc4f90ed469f9f9313b976fb078c20585d5c99"
+                "reference": "2b6fd8b7b630e5c6a04440f7ed358e8753229509"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/d8dc4f90ed469f9f9313b976fb078c20585d5c99",
-                "reference": "d8dc4f90ed469f9f9313b976fb078c20585d5c99",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/2b6fd8b7b630e5c6a04440f7ed358e8753229509",
+                "reference": "2b6fd8b7b630e5c6a04440f7ed358e8753229509",
                 "shasum": ""
             },
             "require": {
@@ -5536,7 +5603,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-12-09T20:25:45+00:00"
+            "time": "2020-12-28T23:56:45+00:00"
         },
         {
             "name": "facade/ignition-contracts",

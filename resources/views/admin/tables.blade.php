@@ -1,97 +1,93 @@
 @extends('admin.masterPageAdmin')
-@section('title','DashBoard Page')
 @section('main')
  <!-- Page Heading -->
-                        <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Nhân viên</h1>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
-                                Launch demo modal
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Age</th>
-                                            <th>Sex</th>
-                                            <th>Phone Number</th>
-                                            <th>Ca lam viec</th>
-                                            <th>Salary</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td></td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <a href="#" data-action="add" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+            Thêm mới
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Tuổi</th>
+                        <th>Giới tính</th>
+                        <th>Số điện thoại</th>
+                        <th>Ca lam viec</th>
+                        <th>Lương</th>
+                        <th>Xử lý</th>
+                        </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Staff</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Thêm mới nhân viên</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-            <form>
+        <div class="modal-body">
+            <form id="form-input">
+                {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="staffName">Name</label>
-                    <input type="text" class="form-control" id="staffName" placeholder="Your Name">
+                    <label for="staffName">Tên</label>
+                    <input type="text" class="form-control" id="ten" name="Ten_Nv" placeholder="Tên nhân viên">
                 </div>
                 <div class="form-group">
-                    <label for="staffAge">Age</label>
-                    <input type="text" class="form-control" id="staffAge" placeholder="Your Age">
+                    <label for="staffAge">Tuoi</label>
+                    <input type="text" class="form-control" id="tuoi" name="Tuoi" placeholder="Tuổi">
                 </div>
                 <div class="form-group">
-                    <label for="staffSex">Sex</label>
-                    <input type="text" class="form-control" id="staffSex" placeholder="Your Sex">
+                    <label for="staffSex">Giới tính</label>
+                    <select class="form-control" name="Gioi_Tinh" id="gioitinh">
+                        <option value="1">Nam</option>
+                        <option value="0">Nữ</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="staffPhoneNumber">Phone Number</label>
-                    <input type="text" class="form-control" id="staffPhoneNumber" placeholder="Your Phone Number">
+                    <label for="staffPhoneNumber">Số điện thoại</label>
+                    <input type="text" class="form-control" name="SDT" id="sdr" placeholder="Số điện thoại">
                 </div>
                 <div class="form-group">
-                    <label for="staffCa">Ca</label>
-                    <input type="text" class="form-control" id="staffCa" placeholder="">
+                    <label for="staffCa">Ca làm việc</label>
+                    <select class="form-control" name="Ca_lam_viec" id="ca">
+                        <option value="1">Ca 1</option>
+                        <option value="2">Ca 2</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="staffSalary">Salary</label>
-                    <input type="text" class="form-control" id="staffSalary" placeholder="Your Salary">
+                    <label for="staffSalary">Lương</label>
+                    <select class="form-control" name="Luong" id="luong" placeholder="Lương">
+                        <option value="1000000">Nhân viên văn phòng - 1 triệu</option>
+                        <option value="20000000">Giám đốc - 20 triệu</option>
+                    </select>
                 </div>
             </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+            <button type="button" data-id="" id="save" class="btn btn-primary">Lưu</button>
+        </div>
     </div>
   </div>
 </div>
+
 @stop()
+@push("scripts")
+<script src="{{ URL::to('admin/js/staff.js') }}"></script>
+@endpush
