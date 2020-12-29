@@ -13,7 +13,8 @@ class StaffController extends Controller
     public function insert(NhanVienRequest $request)
     {
         try{
-            $staff = nhan_vien::where('Ten_Nv', '=', $request->Ten_Nv)->firstOrFail();
+            $staff = nhan_vien::where('Ten_Nv', '=', $request->Ten_Nv)->first();
+            echo($staff);
             if(!is_null($staff))
             {
                 return $this->respondWithError("Bản ghi đã tồn tại.");
@@ -33,8 +34,8 @@ class StaffController extends Controller
     public function update(NhanVienRequest $request)
     {
         try{
-            $id = $request->Id_Nv;
-            $staff = nhan_vien::where("Id_Nv", "=", $id)->firstOrFail();
+
+            $staff = nhan_vien::where('Id_Nv', '=', $request->Id_Nv)->first();
 
             if(is_null($staff))
             {
@@ -53,7 +54,7 @@ class StaffController extends Controller
     public function delete($id)
     {
         try{
-            $staff = nhan_vien::where("Id_Nv", "=", $id)->firstOrFail();
+            $staff = nhan_vien::where("Id_Nv", "=", $id)->first();
 
             if(!is_null($staff))
             {
@@ -70,41 +71,36 @@ class StaffController extends Controller
         }
     }
 
-    public function show($id)
+    public function index()
     {
-        try{
-            $staff = nhan_vien::where("Id_Nv", "=", $id)->firstOrFail();
-            return $this->respond($staff);
-        }
-        catch(Exception $ex)
-        {
-            return $this->respondWithError("Lỗi xảy ra khi thực hiện.");
-        }
-    }
-
-    public function index(Request $request)
-    {
-        if($request->ajax()){
-            $data = nhan_vien::query()->orderBy('Id_Nv', 'asc');
+            $data = nhan_vien::query()->orderBy('Ten_Nv', 'asc');
             return DataTables::of($data)
                     ->addColumn('action' ,function($data){
-                        $button = '<a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"
-                        data-action="edit" name="edit" class="edit btn btn-primary btn-sm">Edit</a>';
+                        $button = '<a href="javascript:void(0);" data-toggle="modal" data-target="#Modal"
+                        data-id="'.$data->Id_Nv.'" data-ten="'.$data->Ten_Nv.'" data-tuoi="'.$data->Tuoi.'"
+                        data-gioitinh="'.$data->Gioi_Tinh.'" data-sdt="'.$data->SDT.'" data-ca="'.$data->Ca_lam_viec.'"
+                        data-luong="'.$data->Luong.'" data-action="edit" name="edit" class="edit btn btn-primary btn-sm">Sửa</a>';
 
-                        $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deleteData('.$data->id.')"
-                        name="delete" class="delete btn btn-danger btn-sm">Delete</a>';
+                        $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deleteData('.$data->Id_Nv.')"
+                        name="delete" class="delete btn btn-danger btn-sm">Xóa</a>';
                         return $button;
                     })
-                    ->addColumn('Gioi_Tinh', function($data){
-                        if($data->Gioi_Tinh == true){
+                    ->addColumn('Gioi_Tinh' ,function($data){
+                        if($data->Gioi_Tinh == 1)
+                        {
                             return "Nam";
                         }
                         else{
                             return "Nữ";
                         }
                     })
-                    ->rawColumns(['action'])
+                    ->rawColumns(['Gioi_Tinh','action'])
                     ->make(true);
-        }
+    }
+
+    public function views()
+    {
+        # code...
+        return view('admin.tables');
     }
 }
