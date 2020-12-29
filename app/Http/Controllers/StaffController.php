@@ -6,7 +6,7 @@ use App\Http\Requests\NhanVienRequest;
 use App\nhan_vien;
 use Exception;
 use Illuminate\Http\Request;
-
+use Yajra\DataTables\Facades\DataTables;
 class StaffController extends Controller
 {
 
@@ -79,6 +79,32 @@ class StaffController extends Controller
         catch(Exception $ex)
         {
             return $this->respondWithError("Lỗi xảy ra khi thực hiện.");
+        }
+    }
+
+    public function index(Request $request)
+    {
+        if($request->ajax()){
+            $data = nhan_vien::query()->orderBy('Id_Nv', 'asc');
+            return DataTables::of($data)
+                    ->addColumn('action' ,function($data){
+                        $button = '<a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"
+                        data-action="edit" name="edit" class="edit btn btn-primary btn-sm">Edit</a>';
+
+                        $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="deleteData('.$data->id.')"
+                        name="delete" class="delete btn btn-danger btn-sm">Delete</a>';
+                        return $button;
+                    })
+                    ->addColumn('Gioi_Tinh', function($data){
+                        if($data->Gioi_Tinh == true){
+                            return "Nam";
+                        }
+                        else{
+                            return "Nữ";
+                        }
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
         }
     }
 }
