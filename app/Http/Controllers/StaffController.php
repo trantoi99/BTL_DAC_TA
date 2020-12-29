@@ -9,14 +9,6 @@ use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
-    public function index(){
-        try {
-
-        }
-        catch{
-            return ('tables',[]);
-        }
-    }
 
     public function insert(NhanVienRequest $request)
     {
