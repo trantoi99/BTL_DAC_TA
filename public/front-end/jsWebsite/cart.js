@@ -91,7 +91,7 @@ function updateCart(id) {
 
         $.ajax({
             method: 'GET',
-            url: '/cart/update',
+            url: '/api/cart/update',
             data: formData,
             dataType: 'json',
             success: function(data) {
@@ -110,7 +110,7 @@ function updateCart(id) {
 
 
 function removeCart(id) {
-    $.get('/cart/destroy/' + id).then(function(data) {
+    $.get('/api/cart/destroy/' + id).then(function(data) {
         $("#item" + data.id).remove();
         $("#totalPrice").text("Tổng tiền: " + formatMoney(data.totalPrice) + " VNĐ");
 
