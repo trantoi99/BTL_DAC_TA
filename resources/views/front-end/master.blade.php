@@ -44,28 +44,10 @@
                 <div class="collapse navbar-collapse" id="basicExampleNav">
                     <!-- Links -->
                     <ul class="navbar-nav mr-auto text-center align-items-center">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Loại Sản Phẩm
-                            </a>
-                            <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                                @foreach($category as $cate)
-                                <a class="dropdown-item" href="/category/{{ $cate->id_danhmuc}}">{{$cate->ten_danhmuc}}</a>
-                                @endforeach
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Thương Hiệu
-                            </a>
-                            <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                                @foreach($brand as $key)
-                                <a class="dropdown-item" href="/brand/{{ $key->id_hang}}">{{$key->ten_hang}}</a>
-                                @endforeach
-                            </div>
-                        </li>
+
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{asset('/cart')}}" style="display: grid">
+                            <a class="nav-link" href="{{asset('/gio-hang-cua-ban')}}" style="display: grid">
                                 <div>
                                     <i style="font-size: 24px" class="fa fa-cart-plus" aria-hidden="true"></i>
                                 </div>
@@ -93,36 +75,9 @@
     <section id="body">
         <div class="container">
             <div class="row" style="margin-top: 100px;">
-                <div id="sidebar" class="col-md-3">
-                    <div id="banner-l" class="text-center">
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-1.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-2.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-3.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-4.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-5.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-6.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-7.png" alt="" class="img-thumbnail">
-                        </div>
-                        <div class="banner-l-item">
-                           <img src="img/home/banner-l-8.png" alt="" class="img-thumbnail">
-                        </div>
-                    </div>
-                </div>
 
-                <div id="main" class="col-md-9">
+
+                <div id="main" class="col-md-12">
                     <!-- main -->
                     <!-- phan slide la cac hieu ung chuyen dong su dung jquey -->
                     <div id="slider">
@@ -135,18 +90,7 @@
                                 <li data-target="#demo" data-slide-to="2"></li>
                             </ul>
 
-                            <!-- The slideshow -->
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="img/home/slide-1.png" alt="Los Angeles">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/home/slide-2.png" alt="Chicago">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="img/home/slide-3.png" alt="New York">
-                                </div>
-                            </div>
+
 
                             <!-- Left and right controls -->
                             <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -158,16 +102,6 @@
                         </div>
                     </div>
 
-                    <div id="banner-t pb-4" class="text-center">
-                        <div class="row">
-                            <div class="banner-t-item col-md-6 col-sm-12 col-xs-12">
-                               <img src="img/home/banner-t-1.png" alt="" class="img-thumbnail">
-                            </div>
-                            <div class="banner-t-item col-md-6 col-sm-12 col-xs-12">
-                               <img src="img/home/banner-t-1.png" alt="" class="img-thumbnail">
-                            </div>
-                        </div>
-                    </div>
                     <!-- wrap -->
                     @yield('main')
                     <!-- end main -->

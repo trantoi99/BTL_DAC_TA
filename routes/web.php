@@ -13,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', [
+Route::get('nhan-vien', [
     'uses' => 'StaffController@views',
     'as' => 'staff.views'
+]);
+
+Route::get('', [
+    'uses' => 'HomeController@getHome',
+    'as' => 'home.getHome'
+]);
+
+Route::get('gio-hang-cua-ban', [
+    'uses' => 'CartController@index',
+    'as' => 'cart.index'
 ]);

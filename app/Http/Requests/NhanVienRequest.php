@@ -27,7 +27,7 @@ class NhanVienRequest extends FormRequest
             "Ten_Nv" => "required",
             "Tuoi" => "required",
             "Gioi_Tinh" => "required",
-            "SDT" => "required",
+            "SDT" => "required|max:11",
             "Ca_lam_viec" => "required",
             "Luong" => "required"
         ];

@@ -30,16 +30,13 @@ class CartController extends Controller
             'associatedModel' => $sanpham
         ));
 
-        // return redirect()->route('cart.index');
-        echo("ok");
+        $cartItems = Cart::getContent();
+        return view('front-end.cart')->with(['cartItems'=>$cartItems]);
     }
 
     public function index()
     {
         $cartItems = Cart::getContent();
-        if(count($cartItems)==0){
-            return back()->with(['error'=>'ban chua mua hang']);
-        }
         return view('front-end.cart')->with(['cartItems'=>$cartItems]);
     }
 

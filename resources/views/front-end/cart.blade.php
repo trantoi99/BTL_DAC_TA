@@ -13,11 +13,10 @@
                     <td width="16.6665%">Số lượng</td>
                     <td width="16.6665%">Đơn giá</td>
                     <td width="16.6665%">Thành tiền</td>
-                    <td width="16.6665%">Cập Nhật</td>
                 </tr>
                 @foreach($cartItems as $item)
                 <tr id="item{{ $item->id }}">
-                    <td><img class="img-responsive" src="{{asset('/front-end/img/details/'.$item->attributes->more_data)}}" alt="{{$item->name}}"></td>
+                    <td><img class="img-responsive" src="{{$item->attributes->more_data}}" alt="{{$item->name}}"></td>
                     <td>{{$item->name}}</td>
                     <td class="text-center">
                         <div class="quantity_group justify-content-center">
