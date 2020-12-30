@@ -68,14 +68,13 @@
                     <select class="form-control" name="Ca_lam_viec" id="ca">
                         <option value="1">Ca 1</option>
                         <option value="2">Ca 2</option>
+                        <option value="3">Ca 3</option>
+                        <option value="4">Ca 4</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="staffSalary">Lương</label>
-                    <select class="form-control" name="Luong" id="luong" placeholder="Lương">
-                        <option value="1000000">Nhân viên văn phòng - 1 triệu</option>
-                        <option value="20000000">Giám đốc - 20 triệu</option>
-                    </select>
+                    <input class="form-control" name="Luong" id="luong" type="text" placeholder="Lương"/>
                 </div>
             </form>
         </div>

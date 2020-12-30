@@ -18,7 +18,6 @@ class CreateChitiethoadonsTable extends Migration
             $table->integer('hoadon_id');
             $table->integer('sanpham_id');
             $table->integer('soluong');
-            $table->timestamps();
         });
     }
 

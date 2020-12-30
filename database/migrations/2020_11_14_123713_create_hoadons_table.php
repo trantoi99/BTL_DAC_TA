@@ -20,7 +20,6 @@ class CreateHoadonsTable extends Migration
             $table->string('diachi');
             $table->string('sodienthoai');
             $table->integer('tongtien');
-            $table->timestamps();
         });
     }
 

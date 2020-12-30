@@ -1,5 +1,4 @@
-
-$(document).ready(function(){
+$(document).ready(function() {
     //csrf token get ajax
     $.ajaxSetup({
         headers: {
@@ -7,21 +6,19 @@ $(document).ready(function(){
         }
     });
     loadTables();
-    $("#save").on("click", function(){
+    $("#save").on("click", function() {
         var id = $(this).attr("data-id");
-        if(id == "")
-        {
+        if (id == "") {
             insert();
-        }
-        else{
+        } else {
             update(id);
         }
     });
-    $("#Modal").on("show.bs.modal", function(e){
+    $("#Modal").on("show.bs.modal", function(e) {
         const action = $(e.relatedTarget).data('action');
-        if(action != undefined){
-            if(action == "edit"){
-                const keys = ['ten' , 'tuoi', 'gioitinh', 'sdt', 'ca', 'luong'];
+        if (action != undefined) {
+            if (action == "edit") {
+                const keys = ['ten', 'tuoi', 'gioitinh', 'sdt', 'ca', 'luong'];
 
                 keys.map(item => {
                     var data = $(e.relatedTarget).attr("data-" + item);
@@ -31,17 +28,18 @@ $(document).ready(function(){
                 var id = $(e.relatedTarget).attr("data-id");
                 $("#save").attr("data-id", id);
             }
-            if(action == "add"){
+            if (action == "add") {
 
                 $("#save").attr("data-id", "");
-                $("#form-input .form-control").map(function(){
+                $("#form-input .form-control").map(function() {
                     $(this).val("");
                 })
             }
         }
     })
 });
-function insert(){
+
+function insert() {
     var formData = $("#form-input").serialize();
     $.ajax({
         method: "POST",
@@ -49,24 +47,23 @@ function insert(){
         data: formData,
         dataType: 'json',
 
-        success: function(msg){
-            if(msg.success){
+        success: function(msg) {
+            if (msg.success) {
                 $("#Modal").modal('toggle');
                 alert(msg.message);
                 reloadTables();
-            }
-            else{
+            } else {
                 alert(msg.message);
             }
         },
 
-        error: function(err){
+        error: function(err) {
             console.log(err.statusText);
         }
     })
 };
 //Yajra Laravel
-function loadTables(){
+function loadTables() {
     $('#myTable').DataTable({
         pageLength: 10,
         processing: true,
@@ -76,14 +73,14 @@ function loadTables(){
         ajax: {
             url: "/api/staff/index",
         },
-        columns : [
+        columns: [
             { data: 'Ten_Nv', name: 'Ten_Nv', 'className': 'text-center', orderable: false },
-            { data: 'Tuoi', name: 'Tuoi', orderable: false},
-            { data: 'Gioi_Tinh', name: 'Gioi_Tinh', orderable: false},
-            { data: 'SDT', name: 'SDT', orderable: false},
-            { data: 'Ca_lam_viec', name: 'Ca_lam_viec', orderable: false},
-            { data: 'Luong', name: 'Luong', orderable: false},
-            { data: 'action', name: 'action', 'className': 'text-center' ,  orderable: false, 'searchable': false }
+            { data: 'Tuoi', name: 'Tuoi', orderable: false },
+            { data: 'Gioi_Tinh', name: 'Gioi_Tinh', orderable: false },
+            { data: 'SDT', name: 'SDT', orderable: false },
+            { data: 'Ca_lam_viec', name: 'Ca_lam_viec', orderable: false },
+            { data: 'Luong', name: 'Luong', orderable: false },
+            { data: 'action', name: 'action', 'className': 'text-center', orderable: false, 'searchable': false }
         ]
     });
 };
@@ -94,8 +91,7 @@ function reloadTables() {
 };
 
 
-function deleteData(id)
-{
+function deleteData(id) {
     Swal.fire({
         title: "Bạn có muốn xóa không?",
         icon: "question",
@@ -105,19 +101,18 @@ function deleteData(id)
         cancelButtonText: "Thoát",
         confirmButtonText: "Xóa",
     }).then(result => {
-        if(result.value){
-            $.get("/api/staff/delete/" + id).then(function(msg){
+        if (result.value) {
+            $.get("/api/staff/delete/" + id).then(function(msg) {
                 alert(msg.message);
                 reloadTables();
-            }).catch(function(error){
+            }).catch(function(error) {
                 console.log(error.statusText);
             });
         }
     })
 };
 
-function update(id)
-{
+function update(id) {
     var formData = $("#form-input").serialize() + "&" + "Id_Nv=" + id;
     console.log(formData);
     $.ajax({
@@ -126,18 +121,17 @@ function update(id)
         data: formData,
         dataType: 'json',
 
-        success: function(msg){
-            if(msg.success){
+        success: function(msg) {
+            if (msg.success) {
                 $("#Modal").modal('toggle');
                 alert(msg.message);
                 reloadTables();
-            }
-            else{
+            } else {
                 alert(msg.message);
             }
         },
 
-        error: function(err){
+        error: function(err) {
             console.log(err.statusText);
         }
     })

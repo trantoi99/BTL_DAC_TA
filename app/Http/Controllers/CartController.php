@@ -30,8 +30,7 @@ class CartController extends Controller
             'associatedModel' => $sanpham
         ));
 
-        $cartItems = Cart::getContent();
-        return view('front-end.cart')->with(['cartItems'=>$cartItems]);
+        return redirect()->route('cart.index');
     }
 
     public function index()
